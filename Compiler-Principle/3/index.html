@@ -333,6 +333,138 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="作业4" class="md-nav__link">
+      作业4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="作业5" class="md-nav__link">
+      作业5
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="作业6" class="md-nav__link">
+      作业6
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="作业7" class="md-nav__link">
+      作业7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="作业8" class="md-nav__link">
+      作业8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="作业9" class="md-nav__link">
+      作业9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="作业10" class="md-nav__link">
+      作业10
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="作业11" class="md-nav__link">
+      作业11
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="作业12" class="md-nav__link">
+      作业12
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="作业13" class="md-nav__link">
+      作业13
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="作业14" class="md-nav__link">
+      作业14
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -427,15 +559,15 @@
 <h3 id="441">4.4.1<a class="headerlink" href="#441" title="Permanent link">&para;</a></h3>
 <p>无左公因子，消除左递归后得到: </p>
 <ul>
-<li>bexpr <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> bterm bexpr'   </li>
-<li>bexpr' <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <strong>or</strong> bterm bexpr' | <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span>   </li>
-<li>bterm <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> bfactor bterm'  </li>
-<li>bterm' <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <strong>and</strong> bfactor bterm' | <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span>   </li>
-<li>bfactor <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <strong>not</strong> bfactor | (bexpr) | <strong>true</strong> | <strong>false</strong></li>
+<li>bexpr <span class="arithmatex">\(\rightarrow\)</span> bterm bexpr'   </li>
+<li>bexpr' <span class="arithmatex">\(\rightarrow\)</span> <strong>or</strong> bterm bexpr' | <span class="arithmatex">\(\epsilon\)</span>   </li>
+<li>bterm <span class="arithmatex">\(\rightarrow\)</span> bfactor bterm'  </li>
+<li>bterm' <span class="arithmatex">\(\rightarrow\)</span> <strong>and</strong> bfactor bterm' | <span class="arithmatex">\(\epsilon\)</span>   </li>
+<li>bfactor <span class="arithmatex">\(\rightarrow\)</span> <strong>not</strong> bfactor | (bexpr) | <strong>true</strong> | <strong>false</strong></li>
 </ul>
 <p>First(bexpr) = First(bterm) = First(bfactor) = {<strong>not</strong>,(,<strong>true</strong>,<strong>false</strong>} <br />
-First(bexpr') = {<strong>or</strong>, <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span>} <br />
-First(bterm) = {<strong>and</strong>, <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span>} <br />
+First(bexpr') = {<strong>or</strong>, <span class="arithmatex">\(\epsilon\)</span>} <br />
+First(bterm) = {<strong>and</strong>, <span class="arithmatex">\(\epsilon\)</span>} <br />
 Follow(bexpr) = Follow(bexpr') = { ), $ } <br />
 Follow(bterm) = Follow(bterm') = { or, $ } <br />
 Follow(bfactor) = { and, $ }   </p>
@@ -517,27 +649,27 @@ Follow(bfactor) = { and, $ }   </p>
 </table></p>
 <h3 id="444">4.4.4<a class="headerlink" href="#444" title="Permanent link">&para;</a></h3>
 <ul>
-<li>First(S) = { (, <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> }</li>
+<li>First(S) = { (, <span class="arithmatex">\(\epsilon\)</span> }</li>
 <li>FollowS(S) = { ), $ }</li>
 </ul>
 <h3 id="445">4.4.5<a class="headerlink" href="#445" title="Permanent link">&para;</a></h3>
 <ol>
 <li>对于这个带回溯的递归下降分析器， <br />
     它每一次发现错误后回溯所消去的a的数量为2,4,8..... <br />
-    即<span><span class="MathJax_Preview">2^n</span><script type="math/tex">2^n</script></span>，那么只有在a的个数为<span><span class="MathJax_Preview">\{a^{2^n} | n≥1\}</span><script type="math/tex">\{a^{2^n} | n≥1\}</script></span>时, <br />
-    假设为k，则他的预测a的个数为<span><span class="MathJax_Preview">2^k - 2^i,i=1,2,3...</span><script type="math/tex">2^k - 2^i,i=1,2,3...</script></span>, <br />
+    即<span class="arithmatex">\(2^n\)</span>，那么只有在a的个数为<span class="arithmatex">\(\{a^{2^n} | n≥1\}\)</span>时, <br />
+    假设为k，则他的预测a的个数为<span class="arithmatex">\(2^k - 2^i,i=1,2,3...\)</span>, <br />
     当i等于k-1时匹配成功。 <br />
     而对于六来说，只有3才能匹配，但是他不会经历这个情况。</li>
-<li>他识别<span><span class="MathJax_Preview">\{a^{2^n} | n≥1\}</span><script type="math/tex">\{a^{2^n} | n≥1\}</script></span>的情况</li>
+<li>他识别<span class="arithmatex">\(\{a^{2^n} | n≥1\}\)</span>的情况</li>
 </ol>
 <h3 id="452">4.5.2<a class="headerlink" href="#452" title="Permanent link">&para;</a></h3>
-<p>S   <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> S S + 
-    <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> S S S + + 
-    <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> S S a + + 
-    <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> S S S * a + +  <br />
-<span><span class="MathJax_Preview">~~~ \Rightarrow</span><script type="math/tex">~~~ \Rightarrow</script></span> S S a * a + +
-    <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> S a a * a + +
-    <span><span class="MathJax_Preview">\Rightarrow</span><script type="math/tex">\Rightarrow</script></span> a a a * a + + </p>
+<p>S   <span class="arithmatex">\(\Rightarrow\)</span> S S + 
+    <span class="arithmatex">\(\Rightarrow\)</span> S S S + + 
+    <span class="arithmatex">\(\Rightarrow\)</span> S S a + + 
+    <span class="arithmatex">\(\Rightarrow\)</span> S S S * a + +  <br />
+<span class="arithmatex">\(~~~ \Rightarrow\)</span> S S a * a + +
+    <span class="arithmatex">\(\Rightarrow\)</span> S a a * a + +
+    <span class="arithmatex">\(\Rightarrow\)</span> a a a * a + + </p>
                 
               
               
@@ -571,6 +703,20 @@ Follow(bfactor) = { and, $ }   </p>
           </a>
         
         
+          <a href="../4/" title="作业4" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                作业4
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
       </nav>
     </div>
   
@@ -602,6 +748,12 @@ Follow(bfactor) = { and, $ }   </p>
           }, typeof search !== "undefined" && search)
         })
       </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
