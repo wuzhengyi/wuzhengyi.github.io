@@ -12,21 +12,21 @@
         <meta name="description" content="NJU 2019级CS硕士在读">
       
       
-        <link rel="canonical" href="https://wuzhengyi.github.io/">
+        <link rel="canonical" href="https://wuzhengyi.github.io/Compiler-Principle/5/">
       
       
         <meta name="author" content="吴政亿">
       
-      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.13">
     
     
       
-        <title>吴政亿的Blog</title>
+        <title>编译原理 第五次作业 - 吴政亿的Blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.077507d7.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.077507d7.min.css">
       
       
     
@@ -56,7 +56,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -84,7 +84,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              首页
+              编译原理 第五次作业
             
           </span>
         </div>
@@ -182,56 +182,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        首页
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="." title="首页" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
       首页
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    Commands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -241,7 +196,7 @@
 
 
   <li class="md-nav__item">
-    <a href="test/" title="测试" class="md-nav__link">
+    <a href="../../test/" title="测试" class="md-nav__link">
       测试
     </a>
   </li>
@@ -274,7 +229,7 @@
 
 
   <li class="md-nav__item">
-    <a href="Compiler-Principle/1/" title="作业1" class="md-nav__link">
+    <a href="../1/" title="作业1" class="md-nav__link">
       作业1
     </a>
   </li>
@@ -286,7 +241,7 @@
 
 
   <li class="md-nav__item">
-    <a href="Compiler-Principle/2/" title="作业2" class="md-nav__link">
+    <a href="../2/" title="作业2" class="md-nav__link">
       作业2
     </a>
   </li>
@@ -298,7 +253,7 @@
 
 
   <li class="md-nav__item">
-    <a href="Compiler-Principle/3/" title="作业3" class="md-nav__link">
+    <a href="../3/" title="作业3" class="md-nav__link">
       作业3
     </a>
   </li>
@@ -333,15 +288,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
-    Commands
+  <a href="#471" class="md-nav__link">
+    4.7.1
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
+  <a href="#512" class="md-nav__link">
+    5.1.2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#522" class="md-nav__link">
+    5.2.2
   </a>
   
 </li>
@@ -358,7 +320,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/wuzhengyi/wuzhengyi.github.io/edit/master/docs/index.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/wuzhengyi/wuzhengyi.github.io/edit/master/docs/Compiler-Principle/5/README.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -366,21 +328,149 @@
                   
                 
                 
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs<a class="headerlink" href="#welcome-to-mkdocs" title="Permanent link">&para;</a></h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout<a class="headerlink" href="#project-layout" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
+                <h1 id="_1">编译原理 第五次作业<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><strong>151220129 计科 吴政亿 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#49;&#56;&#56;&#48;&#53;&#49;&#53;&#54;&#51;&#54;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#49;&#56;&#56;&#48;&#53;&#49;&#53;&#54;&#51;&#54;&#48;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></strong></p>
+<h3 id="471">4.7.1<a class="headerlink" href="#471" title="Permanent link">&para;</a></h3>
+<ol>
+<li>规范LR项集族</li>
+</ol>
+<div class="highlight"><pre><span></span><code>I0:
+    [S&#39; -&gt; ·S  , $] 
+    [S&#39; -&gt; ·SS+, $], [S&#39; -&gt; ·SS+, a]
+    [S&#39; -&gt; ·SS*, $], [S&#39; -&gt; ·SS*, a]
+    [S&#39; -&gt; ·a  , $], [S&#39; -&gt; ·a  , a]
+I1:
+    [S&#39; -&gt; a·  , $], [S&#39; -&gt; a·  , a]
+I2:
+    [S&#39; -&gt; S·  , $] 
+    [S&#39; -&gt; S·S+, $], [S&#39; -&gt; S·S+, a]
+    [S&#39; -&gt; S·S*, $], [S&#39; -&gt; S·S*, a]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I3:
+    [S&#39; -&gt; a·  , a], [S&#39; -&gt; a·  , *], [S&#39; -&gt; a·  , +]
+I4:
+    [S&#39; -&gt; SS·+, $], [S&#39; -&gt; SS·+, a]
+    [S&#39; -&gt; SS·*, $], [S&#39; -&gt; SS·*, a]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I5:
+    [S&#39; -&gt; SS+·, $], [S&#39; -&gt; SS+·, a]
+I6:
+    [S&#39; -&gt; SS*·, $], [S&#39; -&gt; SS*·, a]
+I7:
+    [S&#39; -&gt; SS·+, a], [S&#39; -&gt; SS·+, *], [S&#39; -&gt; SS·+, +]
+    [S&#39; -&gt; SS·*, a], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, +]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I8:
+    [S&#39; -&gt; SS+·, a], [S&#39; -&gt; SS+·, *], [S&#39; -&gt; SS+·, +]
+I9:
+    [S&#39; -&gt; SS*·, a], [S&#39; -&gt; SS*·, *], [S&#39; -&gt; SS*·, +]
 </code></pre></div>
+
+<ol>
+<li>LALR项集族:
+<div class="highlight"><pre><span></span><code>I0:
+    [S&#39; -&gt; ·S  , $] 
+    [S&#39; -&gt; ·SS+, $], [S&#39; -&gt; ·SS+, a]
+    [S&#39; -&gt; ·SS*, $], [S&#39; -&gt; ·SS*, a]
+    [S&#39; -&gt; ·a  , $], [S&#39; -&gt; ·a  , a]
+I1:
+    [S&#39; -&gt; S·  , $] 
+    [S&#39; -&gt; S·S+, $], [S&#39; -&gt; S·S+, a]
+    [S&#39; -&gt; S·S*, $], [S&#39; -&gt; S·S*, a]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I2:
+    [S&#39; -&gt; SS·+, a], [S&#39; -&gt; SS·+, *], [S&#39; -&gt; SS·+, +], [S&#39; -&gt; SS·+, $]
+    [S&#39; -&gt; SS·*, a], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, $]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I3:
+    [S&#39; -&gt; a·  , a], [S&#39; -&gt; a·  , *], [S&#39; -&gt; a·  , +], [S&#39; -&gt; a·  , $]
+I4:
+    [S&#39; -&gt; SS+·, a], [S&#39; -&gt; SS+·, *], [S&#39; -&gt; SS+·, +], [S&#39; -&gt; SS+·, $]
+I5:
+    [S&#39; -&gt; SS*·, a], [S&#39; -&gt; SS*·, *], [S&#39; -&gt; SS*·, +], [S&#39; -&gt; SS*·, $]
+</code></pre></div></li>
+</ol>
+<h3 id="512">5.1.2<a class="headerlink" href="#512" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>产生式</th>
+<th>语法规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">L -&gt; En</span><script type="math/tex">L -> En</script></span></td>
+<td><span><span class="MathJax_Preview">L.val = E.val</span><script type="math/tex">L.val = E.val</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">E -&gt; TE'</span><script type="math/tex">E -> TE'</script></span></td>
+<td><span><span class="MathJax_Preview">E'.inh = T.val</span><script type="math/tex">E'.inh = T.val</script></span></td>
+</tr>
+<tr>
+<td></td>
+<td><span><span class="MathJax_Preview">E.val = E'.syn</span><script type="math/tex">E.val = E'.syn</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">E' -&gt; +TE_1'</span><script type="math/tex">E' -> +TE_1'</script></span></td>
+<td><span><span class="MathJax_Preview">E_1'.inh = E'.inh + T.val</span><script type="math/tex">E_1'.inh = E'.inh + T.val</script></span></td>
+</tr>
+<tr>
+<td></td>
+<td><span><span class="MathJax_Preview">E'.syn = E_1'.syn</span><script type="math/tex">E'.syn = E_1'.syn</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">E' -&gt; \epsilon</span><script type="math/tex">E' -> \epsilon</script></span></td>
+<td><span><span class="MathJax_Preview">E'.syn = E'.inh</span><script type="math/tex">E'.syn = E'.inh</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">T -&gt; FT'</span><script type="math/tex">T -> FT'</script></span></td>
+<td><span><span class="MathJax_Preview">T'.inh = F.val</span><script type="math/tex">T'.inh = F.val</script></span></td>
+</tr>
+<tr>
+<td></td>
+<td><span><span class="MathJax_Preview">T.val = T'.syn</span><script type="math/tex">T.val = T'.syn</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">T' -&gt; *FT_1'</span><script type="math/tex">T' -> *FT_1'</script></span></td>
+<td><span><span class="MathJax_Preview">T_1'.inh = T'.inh * F.val,</span><script type="math/tex">T_1'.inh = T'.inh * F.val,</script></span></td>
+</tr>
+<tr>
+<td></td>
+<td><span><span class="MathJax_Preview">T'.syn = T_1'.syn</span><script type="math/tex">T'.syn = T_1'.syn</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">T' -&gt; \epsilon</span><script type="math/tex">T' -> \epsilon</script></span></td>
+<td><span><span class="MathJax_Preview">T'.syn = T'.inh</span><script type="math/tex">T'.syn = T'.inh</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">F -&gt; (E)</span><script type="math/tex">F -> (E)</script></span></td>
+<td><span><span class="MathJax_Preview">F.val = E.val</span><script type="math/tex">F.val = E.val</script></span></td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">F -&gt; digit</span><script type="math/tex">F -> digit</script></span></td>
+<td><span><span class="MathJax_Preview">F.val = digit.lexval</span><script type="math/tex">F.val = digit.lexval</script></span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="522">5.2.2<a class="headerlink" href="#522" title="Permanent link">&para;</a></h3>
+<!-- ![2](https://img-blog.csdn.net/20180410234552933?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p1c3RpY2Uw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70) -->
                 
               
               
@@ -395,27 +485,6 @@ docs/
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-        
-          <a href="test/" title="测试" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  下一页
-                </span>
-                测试
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -433,15 +502,15 @@ docs/
       
     </div>
     
-      <script src="assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
       
       <script>
         app = initialize({
-          base: ".",
+          base: "../..",
           features: [],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.5eca75d3.min.js"
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

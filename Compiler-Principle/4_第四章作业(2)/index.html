@@ -1,0 +1,753 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="NJU 2019级CS硕士在读">
+      
+      
+        <link rel="canonical" href="https://wuzhengyi.github.io/Compiler-Principle/4_%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A%282%29/">
+      
+      
+        <meta name="author" content="吴政亿">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.13">
+    
+    
+      
+        <title>编译原理第四章作业(2) - 吴政亿的Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.077507d7.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://wuzhengyi.github.io" title="吴政亿的Blog" class="md-header-nav__button md-logo" aria-label="吴政亿的Blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            吴政亿的Blog
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              编译原理第四章作业(2)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/wuzhengyi/wuzhengyi.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://wuzhengyi.github.io" title="吴政亿的Blog" class="md-nav__button md-logo" aria-label="吴政亿的Blog">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    吴政亿的Blog
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/wuzhengyi/wuzhengyi.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../test/" title="测试" class="md-nav__link">
+      测试
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      编译原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="编译原理" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        编译原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="作业1" class="md-nav__link">
+      作业1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="作业2" class="md-nav__link">
+      作业2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="作业3" class="md-nav__link">
+      作业3
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    计科 吴政亿
+  </a>
+  
+    <nav class="md-nav" aria-label="计科 吴政亿">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wuzhengyi/wuzhengyi.github.io/edit/master/docs/Compiler-Principle/4_第四章作业(2)/README.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="2">编译原理第四章作业(2)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<h2 id="_1">计科 吴政亿<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<!-- TOC -->
+
+<ul>
+<li><a href="#编译原理第四章作业2">编译原理第四章作业(2)</a><ul>
+<li><a href="#151220129-计科-吴政亿">151220129 计科 吴政亿</a><ul>
+<li><a href="#462">4.6.2</a></li>
+<li><a href="#463">4.6.3</a></li>
+<li><a href="#466">4.6.6</a></li>
+<li><a href="#471">4.7.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<h3 id="2_1">2<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>增广文法:</p>
+<p>(0)<span><span class="MathJax_Preview">S' \rightarrow S</span><script type="math/tex">S' \rightarrow S</script></span> <br />
+(1)<span><span class="MathJax_Preview">S \rightarrow S S +</span><script type="math/tex">S \rightarrow S S +</script></span> <br />
+(2)<span><span class="MathJax_Preview">B \rightarrow S S *</span><script type="math/tex">B \rightarrow S S *</script></span> <br />
+(3)<span><span class="MathJax_Preview">B \rightarrow a</span><script type="math/tex">B \rightarrow a</script></span>   </p>
+</li>
+<li>
+<p>SLR项集如下:   </p>
+</li>
+<li><span><span class="MathJax_Preview">I_0:S' \rightarrow \cdot S, S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</span><script type="math/tex">I_0:S' \rightarrow \cdot S, S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</script></span></li>
+<li><span><span class="MathJax_Preview">I_1:S' \rightarrow a \cdot</span><script type="math/tex">I_1:S' \rightarrow a \cdot</script></span></li>
+<li><span><span class="MathJax_Preview">I_2:S' \rightarrow S \cdot , S \rightarrow S \cdot S+, S \rightarrow S \cdot S*,S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</span><script type="math/tex">I_2:S' \rightarrow S \cdot , S \rightarrow S \cdot S+, S \rightarrow S \cdot S*,S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</script></span></li>
+<li><span><span class="MathJax_Preview">I_3:S' \rightarrow SS \cdot +, S \rightarrow SS \cdot *, S \rightarrow S \cdot S+,</span><script type="math/tex">I_3:S' \rightarrow SS \cdot +, S \rightarrow SS \cdot *, S \rightarrow S \cdot S+,</script></span> <br />
+<span><span class="MathJax_Preview">\ \ \ \ \ \ \ S \rightarrow S \cdot S*,S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</span><script type="math/tex">\ \ \ \ \ \ \ S \rightarrow S \cdot S*,S \rightarrow \cdot SS+, S \rightarrow \cdot SS*,S \rightarrow \cdot a</script></span></li>
+<li><span><span class="MathJax_Preview">I_4:S' \rightarrow SS+ \cdot</span><script type="math/tex">I_4:S' \rightarrow SS+ \cdot</script></span></li>
+<li>
+<p><span><span class="MathJax_Preview">I_5:S' \rightarrow SS* \cdot</span><script type="math/tex">I_5:S' \rightarrow SS* \cdot</script></span></p>
+</li>
+<li>
+<p>GOTO 函数如下: <br />
+<span><span class="MathJax_Preview">GOTO(I_0,a)=I_1</span><script type="math/tex">GOTO(I_0,a)=I_1</script></span> , <span><span class="MathJax_Preview">GOTO(I_0,S)=I_2</span><script type="math/tex">GOTO(I_0,S)=I_2</script></span>    <br />
+<span><span class="MathJax_Preview">GOTO(I_2,a)=I_1</span><script type="math/tex">GOTO(I_2,a)=I_1</script></span> , <span><span class="MathJax_Preview">GOTO(I_2,S)=I_3</span><script type="math/tex">GOTO(I_2,S)=I_3</script></span> , <span><span class="MathJax_Preview">GOTO(I_2,</span><script type="math/tex">GOTO(I_2,</script></span>$<span><span class="MathJax_Preview">)=accept</span><script type="math/tex">)=accept</script></span> <br />
+<span><span class="MathJax_Preview">GOTO(I_3,a)=I_1</span><script type="math/tex">GOTO(I_3,a)=I_1</script></span> , <span><span class="MathJax_Preview">GOTO(I_3,S)=I_3</span><script type="math/tex">GOTO(I_3,S)=I_3</script></span> <br />
+<span><span class="MathJax_Preview">GOTO(I_3,+)=I_4</span><script type="math/tex">GOTO(I_3,+)=I_4</script></span> , <span><span class="MathJax_Preview">GOTO(I_3,*)=I_5</span><script type="math/tex">GOTO(I_3,*)=I_5</script></span>   </p>
+</li>
+<li>
+<p>语法分析表如下：</p>
+</li>
+</ol>
+<table class="tg">
+  <tr>
+    <th class="tg-2n8g" rowspan="2">状态</th>
+    <th class="tg-2n8g" colspan="4">ACTION</th>
+    <th class="tg-2n8g">GOTO</th>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">a</td>
+    <td class="tg-2n8g">+</td>
+    <td class="tg-2n8g">*</td>
+    <td class="tg-2n8g">$</td>
+    <td class="tg-2n8g">S</td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">0</td>
+    <td class="tg-2n8g">S1</td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g">2</td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">1</td>
+    <td class="tg-2n8g">r3</td>
+    <td class="tg-2n8g">r3</td>
+    <td class="tg-2n8g">r3</td>
+    <td class="tg-2n8g">r3</td>
+    <td class="tg-2n8g"></td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">2</td>
+    <td class="tg-2n8g">S1</td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g">accept</td>
+    <td class="tg-2n8g">3</td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">3</td>
+    <td class="tg-2n8g">S1</td>
+    <td class="tg-2n8g">S4</td>
+    <td class="tg-2n8g">S5</td>
+    <td class="tg-2n8g"></td>
+    <td class="tg-2n8g">3</td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">4</td>
+    <td class="tg-2n8g">r1</td>
+    <td class="tg-2n8g">r1</td>
+    <td class="tg-2n8g">r1</td>
+    <td class="tg-2n8g">r1</td>
+    <td class="tg-2n8g"></td>
+  </tr>
+  <tr>
+    <td class="tg-2n8g">5</td>
+    <td class="tg-2n8g">r2</td>
+    <td class="tg-2n8g">r2</td>
+    <td class="tg-2n8g">r2</td>
+    <td class="tg-2n8g">r2</td>
+    <td class="tg-2n8g"></td>
+  </tr>
+</table>
+
+<p>无冲突，这显然是一个 SLR 文法</p>
+<h3 id="3">3<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>栈</th>
+<th>符号</th>
+<th>输入</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(1)</td>
+<td>0</td>
+<td></td>
+<td>aa*a+$</td>
+<td>移入</td>
+</tr>
+<tr>
+<td>(2)</td>
+<td>01</td>
+<td>a</td>
+<td>a*a+$</td>
+<td>按S-&gt;a规约</td>
+</tr>
+<tr>
+<td>(3)</td>
+<td>02</td>
+<td>S</td>
+<td>a*a+$</td>
+<td>移入</td>
+</tr>
+<tr>
+<td>(4)</td>
+<td>021</td>
+<td>Sa</td>
+<td>*a+$</td>
+<td>按S-&gt;a规约</td>
+</tr>
+<tr>
+<td>(5)</td>
+<td>023</td>
+<td>SS</td>
+<td>*a+$</td>
+<td>移入</td>
+</tr>
+<tr>
+<td>(6)</td>
+<td>0235</td>
+<td>SS*</td>
+<td>a+$</td>
+<td>按S-&gt;SS*规约</td>
+</tr>
+<tr>
+<td>(7)</td>
+<td>02</td>
+<td>S</td>
+<td>a+$</td>
+<td>移入</td>
+</tr>
+<tr>
+<td>(8)</td>
+<td>021</td>
+<td>Sa</td>
+<td>+$</td>
+<td>按S-&gt;a规约</td>
+</tr>
+<tr>
+<td>(9)</td>
+<td>023</td>
+<td>SS</td>
+<td>+$</td>
+<td>移入</td>
+</tr>
+<tr>
+<td>(10)</td>
+<td>0234</td>
+<td>SS+</td>
+<td>$</td>
+<td>按S-&gt;SS+规约</td>
+</tr>
+<tr>
+<td>(11)</td>
+<td>02</td>
+<td>S</td>
+<td>$</td>
+<td>接受</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6">6<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>因为First(SA) = First(A) = {a}，所以该文法不是LL(1)的。</li>
+<li>
+<p>下证该文法是SLR(1)的：   </p>
+<ol>
+<li>增广文法： <br />
+    (0) <span><span class="MathJax_Preview">S' \rightarrow S</span><script type="math/tex">S' \rightarrow S</script></span> <br />
+    (1) <span><span class="MathJax_Preview">S \rightarrow SA</span><script type="math/tex">S \rightarrow SA</script></span> <br />
+    (2) <span><span class="MathJax_Preview">S \rightarrow A</span><script type="math/tex">S \rightarrow A</script></span> <br />
+    (3) <span><span class="MathJax_Preview">A \rightarrow a</span><script type="math/tex">A \rightarrow a</script></span>   </li>
+<li>SLR项集:   </li>
+<li><span><span class="MathJax_Preview">I_0:S' \rightarrow \cdot S , S \rightarrow \cdot SA,S \rightarrow \cdot A , A \rightarrow \cdot a</span><script type="math/tex">I_0:S' \rightarrow \cdot S , S \rightarrow \cdot SA,S \rightarrow \cdot A , A \rightarrow \cdot a</script></span></li>
+<li><span><span class="MathJax_Preview">I_1:A \rightarrow a \cdot</span><script type="math/tex">I_1:A \rightarrow a \cdot</script></span></li>
+<li><span><span class="MathJax_Preview">I_2:S \rightarrow A \cdot</span><script type="math/tex">I_2:S \rightarrow A \cdot</script></span></li>
+<li><span><span class="MathJax_Preview">I_3:S' \rightarrow S \cdot , S \rightarrow S \cdot A , A \rightarrow \cdot a</span><script type="math/tex">I_3:S' \rightarrow S \cdot , S \rightarrow S \cdot A , A \rightarrow \cdot a</script></span></li>
+<li>
+<p><span><span class="MathJax_Preview">I_4:S \rightarrow SA \cdot</span><script type="math/tex">I_4:S \rightarrow SA \cdot</script></span></p>
+</li>
+<li>
+<p>语法分析表:</p>
+</li>
+</ol>
+</li>
+</ul>
+<table>
+  <tr>
+    <th rowspan="2">状态</th>
+    <th colspan="2">ACTION</th>
+    <th colspan="2">GOTO</th>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>$</td>
+    <td>S</td>
+    <td>A</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>S1</td>
+    <td></td>
+    <td>S2</td>
+    <td>S3</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>r3</td>
+    <td>r3</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>r2</td>
+    <td>r2</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>S!</td>
+    <td>acc</td>
+    <td></td>
+    <td>S4</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>r1</td>
+    <td>r1</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<p>因为没有重复的冲突项，故该文法为SLR（1）的。</p>
+<h3 id="1">1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>规范LR项集族</li>
+</ol>
+<div class="highlight"><pre><span></span><code>I0:
+    [S&#39; -&gt; ·S  , $] 
+    [S&#39; -&gt; ·SS+, $], [S&#39; -&gt; ·SS+, a]
+    [S&#39; -&gt; ·SS*, $], [S&#39; -&gt; ·SS*, a]
+    [S&#39; -&gt; ·a  , $], [S&#39; -&gt; ·a  , a]
+I1:
+    [S&#39; -&gt; a·  , $], [S&#39; -&gt; a·  , a]
+I2:
+    [S&#39; -&gt; S·  , $] 
+    [S&#39; -&gt; S·S+, $], [S&#39; -&gt; S·S+, a]
+    [S&#39; -&gt; S·S*, $], [S&#39; -&gt; S·S*, a]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I3:
+    [S&#39; -&gt; a·  , a], [S&#39; -&gt; a·  , *], [S&#39; -&gt; a·  , +]
+I4:
+    [S&#39; -&gt; SS·+, $], [S&#39; -&gt; SS·+, a]
+    [S&#39; -&gt; SS·*, $], [S&#39; -&gt; SS·*, a]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I5:
+    [S&#39; -&gt; SS+·, $], [S&#39; -&gt; SS+·, a]
+I6:
+    [S&#39; -&gt; SS*·, $], [S&#39; -&gt; SS*·, a]
+I7:
+    [S&#39; -&gt; SS·+, a], [S&#39; -&gt; SS·+, *], [S&#39; -&gt; SS·+, +]
+    [S&#39; -&gt; SS·*, a], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, +]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I8:
+    [S&#39; -&gt; SS+·, a], [S&#39; -&gt; SS+·, *], [S&#39; -&gt; SS+·, +]
+I9:
+    [S&#39; -&gt; SS*·, a], [S&#39; -&gt; SS*·, *], [S&#39; -&gt; SS*·, +]
+</code></pre></div>
+
+<ol>
+<li>LALR项集族:
+<div class="highlight"><pre><span></span><code>I0:
+    [S&#39; -&gt; ·S  , $] 
+    [S&#39; -&gt; ·SS+, $], [S&#39; -&gt; ·SS+, a]
+    [S&#39; -&gt; ·SS*, $], [S&#39; -&gt; ·SS*, a]
+    [S&#39; -&gt; ·a  , $], [S&#39; -&gt; ·a  , a]
+I1:
+    [S&#39; -&gt; S·  , $] 
+    [S&#39; -&gt; S·S+, $], [S&#39; -&gt; S·S+, a]
+    [S&#39; -&gt; S·S*, $], [S&#39; -&gt; S·S*, a]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I2:
+    [S&#39; -&gt; SS·+, a], [S&#39; -&gt; SS·+, *], [S&#39; -&gt; SS·+, +], [S&#39; -&gt; SS·+, $]
+    [S&#39; -&gt; SS·*, a], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, *], [S&#39; -&gt; SS·*, $]
+    [S&#39; -&gt; S·S+, a], [S&#39; -&gt; S·S+, *], [S&#39; -&gt; S·S+, +]
+    [S&#39; -&gt; S·S*, a], [S&#39; -&gt; S·S*, *], [S&#39; -&gt; S·S*, +]
+    [S&#39; -&gt; ·SS+, a], [S&#39; -&gt; ·SS+, *], [S&#39; -&gt; ·SS+, +]
+    [S&#39; -&gt; ·SS*, a], [S&#39; -&gt; ·SS*, *], [S&#39; -&gt; ·SS*, +]
+    [S&#39; -&gt; ·a  , a], [S&#39; -&gt; ·a  , *], [S&#39; -&gt; ·a  , +]
+I3:
+    [S&#39; -&gt; a·  , a], [S&#39; -&gt; a·  , *], [S&#39; -&gt; a·  , +], [S&#39; -&gt; a·  , $]
+I4:
+    [S&#39; -&gt; SS+·, a], [S&#39; -&gt; SS+·, *], [S&#39; -&gt; SS+·, +], [S&#39; -&gt; SS+·, $]
+I5:
+    [S&#39; -&gt; SS*·, a], [S&#39; -&gt; SS*·, *], [S&#39; -&gt; SS*·, +], [S&#39; -&gt; SS*·, $]
+</code></pre></div></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
